@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/img/sql/5.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/6.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/7.png">
-<meta property="og:updated_time" content="2018-01-06T22:12:15.721Z">
+<meta property="og:updated_time" content="2018-01-06T22:57:38.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL injection（联合查询）">
 <meta name="twitter:description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
@@ -171,6 +171,33 @@
 </a>
         
       </header>
+	  <!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的分类"><span class="toc-number">1.</span> <span class="toc-text">sql注入的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Union-query-SQL-injection"><span class="toc-number">2.</span> <span class="toc-text">Union query SQL injection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识扫盲"><span class="toc-number">3.</span> <span class="toc-text">知识扫盲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测字段数"><span class="toc-number">4.</span> <span class="toc-text">检测字段数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询数据库基本信息"><span class="toc-number">5.</span> <span class="toc-text">查询数据库基本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询表信息"><span class="toc-number">6.</span> <span class="toc-text">查询表信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询列信息"><span class="toc-number">7.</span> <span class="toc-text">查询列信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询表的内容"><span class="toc-number">8.</span> <span class="toc-text">查询表的内容</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      
+<!-- 目录内容结束 -->
 	  
 		<span class="archive-article-date">
 			阅读量 <span id="busuanzi_value_page_pv"></span>
@@ -184,7 +211,7 @@
 <p>前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。<br>最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧</p>
 </blockquote>
 <h2 id="sql注入的分类"><a href="#sql注入的分类" class="headerlink" title="sql注入的分类"></a>sql注入的分类</h2><p><strong>1.UNION query SQL injection（联合查询注入）<br>2.Error-based SQL injection（报错型注入）<br>3.Boolean-based blind SQL injection（布尔型注入）<br>4.Time-based blind SQL injection（基于时间延迟注入）<br>5.Stacked queries SQL injection（多语句查询注入）</strong><br><a id="more"></a></p>
-<h2 id="UNION-query-SQL-injection（联合查询注入）"><a href="#UNION-query-SQL-injection（联合查询注入）" class="headerlink" title="UNION query SQL injection（联合查询注入）"></a>UNION query SQL injection（联合查询注入）</h2><p>联合查询在sql注入里面是最快获取数据的方法<br>通过UNION来执行注入的sql语句，前提是请求返回后能输出SQL执行后查询到的所有内容</p>
+<h2 id="Union-query-SQL-injection"><a href="#Union-query-SQL-injection" class="headerlink" title="Union query SQL injection"></a>Union query SQL injection</h2><p>联合查询在sql注入里面是最快获取数据的方法<br>通过UNION来执行注入的sql语句，前提是请求返回后能输出SQL执行后查询到的所有内容</p>
 <p><strong>步骤：</strong><br>1.检测字段数<br>2.获取数据库基本信息<br>3.获取数据库所有的表<br>4.获取表的字段<br>5.获取表的内容</p>
 <h2 id="知识扫盲"><a href="#知识扫盲" class="headerlink" title="知识扫盲"></a>知识扫盲</h2><p><strong>user() <code>用户函数</code><br>database() <code>数据库函数</code><br>version() <code>版本号函数</code><br>information_schema<code>mysql自带的库，这个库保存了mysql服务器所有的信息</code><br>information_schema.schemata <code>含有所有数据库名的表</code><br>information_schema.tables <code>含有所有表名的表</code><br>information_schema.columns <code>含有所有列的表</code><br>concat_ws()<code>函数,字符串处理函数</code><br>char()<code>函数字符串函数</code><br>concat_ws()主要是处理char()函数，CHAR(32,58,32)解析出来就是<code>空格:空格</code>
 </strong></p>
@@ -281,6 +308,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的分类"><span class="toc-number">1.</span> <span class="toc-text">sql注入的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Union-query-SQL-injection"><span class="toc-number">2.</span> <span class="toc-text">Union query SQL injection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识扫盲"><span class="toc-number">3.</span> <span class="toc-text">知识扫盲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测字段数"><span class="toc-number">4.</span> <span class="toc-text">检测字段数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询数据库基本信息"><span class="toc-number">5.</span> <span class="toc-text">查询数据库基本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询表信息"><span class="toc-number">6.</span> <span class="toc-text">查询表信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询列信息"><span class="toc-number">7.</span> <span class="toc-text">查询列信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询表的内容"><span class="toc-number">8.</span> <span class="toc-text">查询表的内容</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -439,19 +479,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">kai</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
               </li>
              
               <li class="article-tag-list-item">
