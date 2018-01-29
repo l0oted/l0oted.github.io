@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 渗透思路 | looted&#39;s blog</title>
+  <title>web解析漏洞 | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="looted&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/渗透思路/index.html">
+  <meta name="description" content="解析漏洞有什么用么？在我们遇到上传漏洞的时候我们上传shell成功了，但是这个shell却不能被解析，这个时候我们就要借助服务器的解析漏洞来对他进行解析。  IIS 版本的规律IIS 6.0  →  server 2003 IIS 7.0  → server 2008 IIS 7.5  → server 2008 r2 IIS 8.0  → server 2012">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web解析漏洞">
+<meta property="og:url" content="http://yoursite.com/2018/01/15/web解析漏洞/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
+<meta property="og:description" content="解析漏洞有什么用么？在我们遇到上传漏洞的时候我们上传shell成功了，但是这个shell却不能被解析，这个时候我们就要借助服务器的解析漏洞来对他进行解析。  IIS 版本的规律IIS 6.0  →  server 2003 IIS 7.0  → server 2008 IIS 7.5  → server 2008 r2 IIS 8.0  → server 2012">
+<meta property="og:updated_time" content="2018-01-15T00:34:48.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="looted&#39;s blog">
+<meta name="twitter:title" content="web解析漏洞">
+<meta name="twitter:description" content="解析漏洞有什么用么？在我们遇到上传漏洞的时候我们上传shell成功了，但是这个shell却不能被解析，这个时候我们就要借助服务器的解析漏洞来对他进行解析。  IIS 版本的规律IIS 6.0  →  server 2003 IIS 7.0  → server 2008 IIS 7.5  → server 2008 r2 IIS 8.0  → server 2012">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -141,65 +145,172 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-web解析漏洞" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/02/校园网渗透测试-系统层篇/" class="archive-article-date">
-  	<time datetime="2018-01-02T11:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/02/校园网渗透测试-系统层篇/">校园网渗透测试(系统层篇)</a>
+    <h1 class="article-title" itemprop="name">
+      web解析漏洞
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透思路</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2018/01/15/web解析漏洞/" class="archive-article-date">
+  	<time datetime="2018-01-15T00:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-15</time>
+</a>
+        
+      </header>
+	  <!-- 目录内容 -->
 
-          
+<!-- 目录内容结束 -->
+	  
+		<span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>解析漏洞有什么用么？在我们遇到上传漏洞的时候我们上传shell成功了，但是这个shell却不能被解析，这个时候我们就要借助服务器的解析漏洞来对他进行解析。</p>
+</blockquote>
+<h2 id="IIS-版本的规律"><a href="#IIS-版本的规律" class="headerlink" title="IIS 版本的规律"></a>IIS 版本的规律</h2><p><strong>IIS 6.0  →  server 2003</strong></p>
+<p><strong>IIS 7.0  → server 2008</strong></p>
+<p><strong>IIS 7.5  → server 2008 r2</strong></p>
+<p><strong>IIS 8.0  → server 2012</strong><br><a id="more"></a></p>
+<h2 id="如何快速分辨是Linux-windows系统的站点"><a href="#如何快速分辨是Linux-windows系统的站点" class="headerlink" title="如何快速分辨是Linux/windows系统的站点"></a>如何快速分辨是Linux/windows系统的站点</h2><p>Linux 区分大小写，windows 不区分，利用这个规律,例如访问:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.1/admin.php</span><br></pre></td></tr></table></figure></p>
+<p>尝试把 admin.php 中 a , 换成大写 A 访问，如果不报错证明是 windows 平台。</p>
+<h1 id="IIS-6-0解析漏洞"><a href="#IIS-6-0解析漏洞" class="headerlink" title="IIS 6.0解析漏洞"></a>IIS 6.0解析漏洞</h1><p><strong>1.目录解析</strong><br>/xx.asp/xx.jpg<br>在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。<br>例如创建目录<code>sp.asp</code>，那么<code>/sp.asp/1.jpg</code>将被当作asp文件来执行。<br>假设黑阔可以控制上传文件夹路径,就可以不管你上传后你的图片改不改名都能拿shell了。<br><strong>2.文件解析</strong><br>sp.asp;.jpg<br>在IIS6.0下，分号后面的不被解析，也就是说<br><code>sp.asp;.jpg</code>会被服务器看成是sp.asp<br>还有IIS6.0 默认的可执行文件除了asp还包含这三种<br><code>/sp.asa</code><br><code>/sp.cer</code><br><code>/sp.cdx</code></p>
+<h2 id="IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><a href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞" class="headerlink" title="IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞"></a>IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</h2><p>Nginx解析漏洞这个伟大的漏洞是我国安全组织80sec发现的…<br>在默认Fast-CGI开启状况下,黑阔上传一个名字为sp.jpg，内容为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?PHP fputs(fopen(&apos;shell.php&apos;,&apos;w&apos;),&apos;&lt;?php eval($_POST[cmd])?&gt;&apos;);?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>的文件，然后访问<code>sp.jpg/.php</code>,在这个目录下就会生成一句话木马 shell.php<br>IIS7.5的漏洞与nginx的类似，都是由于php配置文件中，开启了cgi.fix_pathinfo，而这并不是nginx或者iis7.5本身的漏洞。</p>
+<h2 id="Nginx-lt-8-03-空字节代码执行漏洞"><a href="#Nginx-lt-8-03-空字节代码执行漏洞" class="headerlink" title="Nginx &lt;8.03 空字节代码执行漏洞"></a>Nginx &lt;8.03 空字节代码执行漏洞</h2><p>影响版:<code>0.5.x</code>,<code>0.6.x</code>, <code>0.7</code> &lt;= <code>0.7.65</code>, <code>0.8</code> &lt;= <code>0.8.37</code><br>Nginx在图片中嵌入PHP代码然后通过访问<br>xxx.jpg%00.php<br>来执行其中的代码</p>
+<h2 id="apache解析漏洞"><a href="#apache解析漏洞" class="headerlink" title="apache解析漏洞"></a>apache解析漏洞</h2><p>apache识别文件的类型是从右往左是别的，如果遇到不认识的扩展名会向前一个识别,直到遇到能识别的扩展名。<br>能上传jpg文件，而不能上传php文件,直接<code>test.php</code>加成<code>test.php.abc</code>（abc位置可加任何apache不解析的后缀）<br>这样apache就直接解析成test.php</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/01/16/可视化sql注入/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          可视化sql注入
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/01/08/SQL-injection-布尔盲注/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL injection(布尔盲注)</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "oKYfcplcKAV7KNQLRl3cn45m-gzGzoHsz",
+            app_key: "kEVrLfVvi3zlCclIYRwVXFgb",
+            placeholder: "评论一下吧！",
+            avatar:"/img/pl.png"
+        });
+    }
+</script>
+    </section>
+  
+
+  
+
+
 
     
-
 
           </div>
         </div>
@@ -226,9 +337,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/img/sql/5.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/6.png">
 <meta property="og:image" content="http://yoursite.com/img/sql/7.png">
-<meta property="og:updated_time" content="2018-01-06T22:57:38.033Z">
+<meta property="og:updated_time" content="2018-01-07T19:23:21.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL injection（联合查询）">
 <meta name="twitter:description" content="前天发那个微信js跳转支付宝的一夜就黄了！寻思想写点啥东西？想了很久都没想到。最后决定还是记录下sql注入的基础，还有怎么针对sql注入漏洞来编写python脚本吧  sql注入的分类1.UNION query SQL injection（联合查询注入）2.Error-based SQL injection（报错型注入）3.Boolean-based blind SQL injection（布">
@@ -227,7 +227,7 @@
 <h2 id="查询表的内容"><a href="#查询表的内容" class="headerlink" title="查询表的内容"></a>查询表的内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/?id=-1<span class="string">' union select 1,group_concat(char(32),username,char(32)),group_concat(char(32),password,char(32)) from users -- +</span></span><br></pre></td></tr></table></figure>
 <p><img src="/img/sql/7.png" alt="“sql7”"></p>
 <blockquote>
-<p>这篇联合查询的文章就不写脚本了，等下一篇基于错误的sql注入再写</p>
+<p>这篇联合查询的文章就不写脚本了，等下一篇sql盲注再写<br>忘了介绍这款sql注入练习源码，百度<code>sqli-labs</code></p>
 </blockquote>
 
       
@@ -286,6 +286,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/01/08/SQL-injection-布尔盲注/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SQL injection(布尔盲注)
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/05/js微信跳转支付宝/" id="article-nav-older" class="article-nav-link-wrap">
@@ -479,6 +488,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">kai</a>
               </li>
              
@@ -492,10 +509,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
             
             <div class="clearfix"></div>
