@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | looted&#39;s blog</title>
+  <title>python模拟登陆github | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="looted&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="用python写模拟登陆的时候我们要先去了解网站的登录机制  github登录机制当我们访问https://github.com/login时候会返回一个authenticity_token这个token值是随机的，会在https://github.com/session模拟登陆的时候用到记得dvwa的暴力破解(高级)也是每刷新一次生成一个token当我们模拟登陆成功后状态码为302(重定向)">
+<meta name="keywords" content="python,模拟登陆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python模拟登陆github">
+<meta property="og:url" content="http://yoursite.com/2018/02/14/python模拟登陆github/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
+<meta property="og:description" content="用python写模拟登陆的时候我们要先去了解网站的登录机制  github登录机制当我们访问https://github.com/login时候会返回一个authenticity_token这个token值是随机的，会在https://github.com/session模拟登陆的时候用到记得dvwa的暴力破解(高级)也是每刷新一次生成一个token当我们模拟登陆成功后状态码为302(重定向)">
+<meta property="og:updated_time" content="2018-02-13T18:33:37.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="looted&#39;s blog">
+<meta name="twitter:title" content="python模拟登陆github">
+<meta name="twitter:description" content="用python写模拟登陆的时候我们要先去了解网站的登录机制  github登录机制当我们访问https://github.com/login时候会返回一个authenticity_token这个token值是随机的，会在https://github.com/session模拟登陆的时候用到记得dvwa的暴力破解(高级)也是每刷新一次生成一个token当我们模拟登陆成功后状态码为302(重定向)">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -141,233 +146,155 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python模拟登陆github" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python模拟登陆github
+    </h1>
+  
+
+        
+        <a href="/2018/02/14/python模拟登陆github/" class="archive-article-date">
+  	<time datetime="2018-02-13T17:58:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-14</time>
+</a>
+        
+      </header>
+	  <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+	  
+		<span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>用python写模拟登陆的时候我们要先去了解网站的登录机制</p>
+</blockquote>
+<h2 id="github登录机制"><a href="#github登录机制" class="headerlink" title="github登录机制"></a>github登录机制</h2><p><strong>当我们访问<a href="https://github.com/login时候会返回一个authenticity_token" target="_blank" rel="noopener">https://github.com/login时候会返回一个authenticity_token</a><br>这个token值是随机的，会在<a href="https://github.com/session模拟登陆的时候用到" target="_blank" rel="noopener">https://github.com/session模拟登陆的时候用到</a><br><code>记得dvwa的暴力破解(高级)也是每刷新一次生成一个token</code><br>当我们模拟登陆成功后状态码为302(重定向)</strong><br><a id="more"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">con = requests.session()  <span class="comment">#模拟登陆必须用到session功能</span></span><br><span class="line">url1 = <span class="string">"https://github.com/login"</span>   <span class="comment">#获取token的地址</span></span><br><span class="line">url2 = <span class="string">"https://github.com/session"</span>   <span class="comment">#模拟登陆网址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这里是我设置的burpsuite代理，主要是用来观察python的请求和返回值</span></span><br><span class="line">proxies=&#123;</span><br><span class="line">	<span class="string">"http"</span>:<span class="string">"http:127.0.0.1:8080"</span>,</span><br><span class="line">	<span class="string">"https"</span>:<span class="string">"http:127.0.0.1:8080"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取token值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gettoken</span><span class="params">(url1)</span>:</span></span><br><span class="line">	html = con.get(url1,proxies=proxies,verify=<span class="keyword">False</span>).text.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">	soup = BeautifulSoup(html,<span class="string">'html.parser'</span>)</span><br><span class="line">	token = str(soup.find_all(<span class="string">'input'</span>)[<span class="number">1</span>][<span class="string">'value'</span>])</span><br><span class="line">	<span class="keyword">print</span> <span class="string">'authenticity_token = '</span>+ token</span><br><span class="line">	<span class="keyword">return</span> token</span><br><span class="line"></span><br><span class="line"><span class="comment">#模拟登陆</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(url)</span>:</span></span><br><span class="line">	token = gettoken(url1)</span><br><span class="line">	data =&#123;</span><br><span class="line">		<span class="string">'commit'</span>:<span class="string">'Sign+in'</span>,</span><br><span class="line">		<span class="string">'utf8'</span>:<span class="string">'%E2%9C%93'</span>,</span><br><span class="line">		<span class="string">'authenticity_token'</span>:token,		<span class="comment">#这里的data构建我们可以看数据包</span></span><br><span class="line">		<span class="string">'login'</span>:<span class="string">'937169724@qq.com'</span>,</span><br><span class="line">		<span class="string">'password'</span>:<span class="string">'马赛克'</span>&#125;</span><br><span class="line">	<span class="keyword">print</span> con.post(url,data=data,proxies=proxies,verify=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	main(url2)</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/07/sql-injection-一/" class="archive-article-date">
-  	<time datetime="2018-01-06T19:34:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/07/sql-injection-一/">SQL injection（联合查询）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/05/js微信跳转支付宝/" class="archive-article-date">
-  	<time datetime="2018-01-05T11:20:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/js微信跳转支付宝/">js微信跳转支付宝</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS跳转</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/03/kali实现的进程实时显示/" class="archive-article-date">
-  	<time datetime="2018-01-03T14:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/03/kali实现的进程实时显示/">kali实现的进程实时显示</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kai</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统美化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模拟登陆</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/02/校园网渗透测试-系统层篇/" class="archive-article-date">
-  	<time datetime="2018-01-02T11:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/29/JSP小马上传/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSP小马上传</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/02/校园网渗透测试-系统层篇/">校园网渗透测试(系统层篇)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透思路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/02/2017-BDCTF/" class="archive-article-date">
-  	<time datetime="2018-01-02T08:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/02/2017-BDCTF/">2017-BDCTF</a>
-    </h1>
+  <div id="SOHUCS" sid="python模拟登陆github" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cytoErnKM",
+        conf: "87f2263b2c06305396970c92f9917130"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">蓝盾CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高校杯</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CTF解题</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
 
-          
+  
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
+
   
-    </div></section>
-  
+
+
 
     
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -394,8 +321,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
