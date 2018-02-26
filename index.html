@@ -143,6 +143,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-内网端口映射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/26/内网端口映射/">内网端口转发</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/26/内网端口映射/" class="archive-article-date">
+  	<time datetime="2018-02-26T08:48:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+</a>
+        
+      </header>
+	  <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+	  
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>什么情况下需要端口转发：</strong><br>WEB服务器在内网中，远程桌面无法连接，需要进行端口转发。当内网IP的80端口通过端口映射到外网IP的80端口上， 内网的WEB服务器通过外网IP反向代理，这个情况下需要进行端口转发。</p>
+<p>常用的端口转发工具有： <code>lcx</code> <code>EathWorm</code> <code>reGeorg</code> <code>nc</code> <code>ssocket</code> <code>Tunna</code><br>
+        
+          <a class="article-more-a" href="/2018/02/26/内网端口映射/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">端口转发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/26/内网端口映射/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+    
+
+  
     <article id="post-python模拟登陆github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -489,98 +573,6 @@
     
 
   
-    <article id="post-SQL-injection-布尔盲注" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/08/SQL-injection-布尔盲注/">SQL injection(布尔盲注)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/08/SQL-injection-布尔盲注/" class="archive-article-date">
-  	<time datetime="2018-01-07T19:20:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        
-      </header>
-	  <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-	  
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<blockquote>
-<p>最喜欢深夜的感觉，安安静静的！！！<br>什么？？喜欢深夜？怪不得还是单身狗</p>
-</blockquote>
-<h2 id="知识扫盲"><a href="#知识扫盲" class="headerlink" title="知识扫盲"></a>知识扫盲</h2><p>length(str)：<code>返回字符串str的长度</code><br>substr(str,pos,len)：<code>将str从pos位置开始截取len长度的字符返回，需要注意的是这里pos的是从1开始的</code><br>mid(str,pos,len)：<code>和substr()类似</code><br>ascii(str)：<code>返回字符串str最左边的acsii码（即首字母的acsii码）</code><br>ord()：<code>同上，返回acsii码</code><br>left(str,len)：<code>对字符串str左截取len长度</code><br>right(str,len)：<code>对字符串str右截取len长度</code><br>if(a,b,c)：<code>条件判断，如果a为true，返回b，否则返回c</code></p>
-<p>盲注有个固定式：and ascii(substr(A,1,1))&gt;B，或者and if(ascii(substr(A,1,1))&gt;B,1,0)，这里的A通常是一个select语句，B则是字符或数字的ascii码，他们的中心思想都是通过substr等截取函数以二分法的形式查询逐个匹配想要的信息，这个过程通常都很耗时，所以建议直接写个盲注脚本来跑<br>
-        
-          <a class="article-more-a" href="/2018/01/08/SQL-injection-布尔盲注/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/08/SQL-injection-布尔盲注/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-    
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -683,19 +675,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">kai</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,11 +691,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞上传</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kai</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,11 +727,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞上传</a>
+                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
             
             <div class="clearfix"></div>
