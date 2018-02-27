@@ -9,7 +9,7 @@
   <title>SQL injection(布尔盲注) | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最喜欢深夜的感觉，安安静静的！！！什么？？喜欢深夜？怪不得还是单身狗  知识扫盲length(str)：返回字符串str的长度substr(str,pos,len)：将str从pos位置开始截取len长度的字符返回，需要注意的是这里pos的是从1开始的mid(str,pos,len)：和substr()类似ascii(str)：返回字符串str最左边的acsii码（即首字母的acsii码）or">
-<meta name="keywords" content="python,sql注入">
+<meta name="keywords" content="sql注入,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL injection(布尔盲注)">
 <meta property="og:url" content="http://yoursite.com/2018/01/08/SQL-injection-布尔盲注/index.html">
@@ -231,11 +231,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -296,21 +296,33 @@
   
 
   
-  <div id="SOHUCS" sid="SQL-injection-布尔盲注" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cytoErnKM",
-        conf: "87f2263b2c06305396970c92f9917130"
-    });
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "oKYfcplcKAV7KNQLRl3cn45m-gzGzoHsz",
+            app_key: "kEVrLfVvi3zlCclIYRwVXFgb",
+            placeholder: "评论一下吧！",
+            avatar:"/img/pl.png"
+        });
+    }
 </script>
-</script>
-  
-
-  
-
-  
-
+    </section>
   
 
   
@@ -414,10 +426,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">蓝盾CTF</a>
               </li>
              
@@ -430,14 +438,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
               </li>
              
@@ -447,6 +447,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
               </li>
              
               <li class="article-tag-list-item">
