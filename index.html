@@ -143,6 +143,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-splunk日记分析系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/24/splunk日记分析系统/">splunk日记分析系统</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/24/splunk日记分析系统/" class="archive-article-date">
+  	<time datetime="2018-03-24T05:49:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
+</a>
+        
+      </header>
+	  <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+	  
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统<br><strong>简单来说：将所有服务器日记信息实时转发到splunk服务器进行储存，这样就算服务器的日记文件被恶意删除，也不会影响到日记分析或取证。也可以创建规则，当服务器有恶意扫描时候触发警报，这对运维应急响应人员有很大的帮助</strong></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装包两个<br>splunk服务器端最好搭建在linux上<br>服务器端<br>linux：<code>splunk-6.4.3-linux-x86_64.tgz</code><br>客户端(forwarder)<br>windows:<code>splunkforwarder-6.4.3-x64-release.msi</code><br>linux：<code>splunkforwarder-6.4.3-linux-x86_64.tgz</code></p>
+<p>下载地址：官网<a href="https://www.splunk.com/" target="_blank" rel="noopener">https://www.splunk.com/</a> 要先注册</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><strong><font size="5">服务器：</font><br></strong><br>在centos7部署splunk服务器时<br>防止数据接收失败，为了服务端的正常运行<br>需要关闭防火墙，还有selinux</p>
+<p><strong>centos 7 的防火墙是firewalld不是iptables</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld stop</span><br></pre></td></tr></table></figure></p>
+<p><strong>selinux</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sestatus -v  查看seliunx状态</span><br><span class="line"></span><br><span class="line">setenforce 0 临时关闭 selinux</span><br><span class="line"></span><br><span class="line">永久关闭</span><br><span class="line"></span><br><span class="line">/etc/selinux/config</span><br><span class="line"></span><br><span class="line">selinux =enforcing 改成 disabled 需要重启</span><br></pre></td></tr></table></figure>
+<p><strong>0X01<br>先把安装包拉到usr文件夹进行解压</strong><br><img src="/img/splunk/1.jpg" alt="“splunk”"><br><strong>0X02<br>进入splunk目录的bin启动服务</strong><br><img src="/img/splunk/2.jpg" alt="“splunk”"><br><strong>0X03<br>splunk安装之后开启Splunk Web端口8000。Splunkd端口8089端为管理端口。<br>安装之后我们可以在浏览器中访问splunk 8000端口的WEB界面。<br><a href="http://127.0.0.1：8000" target="_blank" rel="noopener">http://127.0.0.1：8000</a><br>进入splunk默认的管理员为：admin 、密码为changeme。第一登录便会强制要求修改密码</strong><br><img src="/img/splunk/3.jpg" alt="“splunk”"><br><strong>0X04
+</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splunk enable boot-start  设置开机启动</span><br><span class="line"></span><br><span class="line">splunk status  查看splunk状态和版本信息</span><br><span class="line"></span><br><span class="line">ps -f | grep splunk  查看进程相关信息</span><br></pre></td></tr></table></figure></p>
+<p><strong><font size="5">客户端(forwarder):</font><br></strong><br><strong>windows：</strong><br><strong>0x01</strong><br>打开msi文件选择customize<br><img src="/img/splunk/4.jpg" alt="“splunk”"><br><strong>0x02</strong><br>选择安装路径<br><img src="/img/splunk/5.jpg" alt="“splunk”"><br><strong>0x03</strong><br>直接下一步<br><img src="/img/splunk/6.jpg" alt="“splunk”"><br><strong>0x04</strong><br>下一步<br><img src="/img/splunk/7.jpg" alt="“splunk”"><br><strong>0x05</strong><br>选择需要转发的系统文件，如果选择项没有<br>eg：tomcat访问日记，直接人工选择路径<br><img src="/img/splunk/8.jpg" alt="“splunk”"><br><strong>0x06</strong><br>这里直接填写本地ip和8089端口<br><img src="/img/splunk/9.jpg" alt="“splunk”"><br><strong>0x07</strong><br>填写splunk的ip，端口9997<br><img src="/img/splunk/10.jpg" alt="“splunk”"> </p>
+<p><strong>linux：</strong></p>
+<p>将forwarder解压出来进入文件夹的bin/目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd bin/</span><br><span class="line"></span><br><span class="line">./splunk start</span><br><span class="line"></span><br><span class="line">./splunk enable boot-start   设置开机启动 </span><br><span class="line"></span><br><span class="line">ps aux |grep splunk</span><br><span class="line"></span><br><span class="line">./splunk add forward-server ip:端口  添加转发服务器</span><br><span class="line"></span><br><span class="line">./splunk add forward-server ip:端口 -auth admin:password</span><br><span class="line"></span><br><span class="line">./splunk add monitor /home/log/access.log  添加内容</span><br><span class="line"></span><br><span class="line">./ splunk list add monitor /home 监控整个目录</span><br><span class="line"></span><br><span class="line">./splunk list forward-server 查看splunk的转发情况</span><br><span class="line"></span><br><span class="line">./splunk list monitor 显示那些被监控</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">splunk</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/24/splunk日记分析系统/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+    
+
+  
     <article id="post-天翼上网账号抓取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,93 +576,6 @@
     
 
   
-    <article id="post-可视化sql注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/可视化sql注入/">可视化sql注入</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/可视化sql注入/" class="archive-article-date">
-  	<time datetime="2018-01-15T19:10:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-	  <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-	  
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<blockquote>
-<p>听到可视化sql注入这个词语是不是有点陌生<br>能达到什么样的一个效果呢？</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>SQLiGODS全名叫SQli Gods Syntax，实质上是一个适用于mysql数据库的concat函数。<br>通过将联合查询注入的繁琐步骤变成网页里的一个可视化div，大大简化了手注帝们联合查询时编码解码的步骤，省时省力。</strong><br>
-        
-          <a class="article-more-a" href="/2018/01/16/可视化sql注入/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/可视化sql注入/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-    
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -688,19 +694,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞上传</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,11 +718,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞上传</a>
+                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,6 +731,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">splunk</a>
               </li>
             
             <div class="clearfix"></div>

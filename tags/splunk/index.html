@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>校园网渗透测试(系统层篇) | looted&#39;s blog</title>
+  <title>Tag: splunk | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
-<meta name="keywords" content="内网渗透,渗透思路">
-<meta property="og:type" content="article">
-<meta property="og:title" content="校园网渗透测试(系统层篇)">
-<meta property="og:url" content="http://yoursite.com/2018/01/02/校园网渗透测试-系统层篇/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="looted&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/splunk/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
-<meta property="og:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
-<meta property="og:updated_time" content="2018-01-04T13:54:52.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="校园网渗透测试(系统层篇)">
-<meta name="twitter:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
+<meta name="twitter:title" content="looted&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -146,182 +141,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-校园网渗透测试-系统层篇" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      校园网渗透测试(系统层篇)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/03/24/splunk日记分析系统/" class="archive-article-date">
+  	<time datetime="2018-03-24T05:49:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/03/24/splunk日记分析系统/">splunk日记分析系统</a>
     </h1>
   
 
-        
-        <a href="/2018/01/02/校园网渗透测试-系统层篇/" class="archive-article-date">
-  	<time datetime="2018-01-02T11:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        
-      </header>
-	  <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-	  
-		<span class="archive-article-date">
-			阅读量 <span id="busuanzi_value_page_pv"></span>
-		</span>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<blockquote>
-<p>学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。</p>
-</blockquote>
-<p>校园网为什么存在众多漏洞？<br>服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比<br>校园网都有哪些系统？<br>举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等<br>这些系统都是在哪些网段呢？<br><a id="more"></a></p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>对校园网的子网划分进行一个信息收集和猜测<br>局域网保留地址：<br>A类：10.0.0.0/8      10.0.0.0-10.255.255.255<br>B类：172.16.0.0/12   172.16.0.0-172.31.255.255<br>C类：192.168.0.0/16  192.168.0.0～192.168.255.255<br>为什么要先对内网的结构进行收集和猜测呢？<br>主要是为了弄清楚哪些网段有比较多的服务器，还有他们在跑什么业务，这样我们就可以更有针对性的开展渗透测试<br>我们收集这些信息的方法有很多种：<br>1.大范围的扫描80，8080端口<br>2.内网ping学校网站域名（如果设置了外网DNS是无法解析到内网服务器ip的）<br>3.查看路由跳转经过的网段<br>还有很多种这就不一一举例出来了<br>经过一段时间的收集后我们确定出重要的网段然后整理出来</p>
-<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>系统层的漏洞扫描<br>使用漏扫工具对这些网段进行漏洞扫描<br>推荐几款漏扫工具：openvas  nessus  nmap  sparte<br>注意一些直接getshell的端口：<br>111 139 445 1099 2049 3632 3389 6667 8787 8180 6379<br>系统层的漏洞利用学习推荐Metasploitable2<br>对于上一年五月份来说一个msf就够，给他来一波ms17-010(永恒之蓝)，一堆shell</p>
-<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><p>问题来了，校园网内不能开nat，不能桥接，找到漏洞利用了，shell怎么返回到虚拟机<br>1.使用bat脚本，持续开启nat服务，然后在虚拟机做个端口映射，映射到物理机上的其他端口，payload设置返回端口为物理机上的端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">:s</span><br><span class="line">ping -n 1 127.1&gt;null</span><br><span class="line">net start|findstr /i /c:&quot;VMware NAT Service&quot;&gt;nul&amp;&amp;set k=1||set k=0</span><br><span class="line">if %k%==0 (net start &quot;VMware NAT Service&quot;) </span><br><span class="line">goto s</span><br></pre></td></tr></table></figure></p>
-<p>2.使用windows大杀器PentestBox(聚成kali的很多软件)</p>
-<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><p>校园网拿到shell以后我们可以做什么？？<br>在学校上网被运营商垄断网费贼贵<br>拿到shell可以挂个vpn我们上网就不用交费啦！<br>还有一个就是校园网晚上会断网（当代大学生烦恼的问题）<br>我们只需要拿到上网验证服务器的shell，上去改下我们上网的权限就可以24小时不断网<br>怎么找到上网验证服务器的IP地址呢？<br>验证的时候看跳转/抓包–嘿嘿嘿不说了不说了</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透思路</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">splunk</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/01/03/kali实现的进程实时显示/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          kali实现的进程实时显示
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/01/02/2017-BDCTF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017-BDCTF</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
-      <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script src="/Valine.min.js"></script>
-<script>
-   var notify = 'true' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '#vcomment',
-            notify: notify,
-            verify: verify,
-            app_id: "oKYfcplcKAV7KNQLRl3cn45m-gzGzoHsz",
-            app_key: "kEVrLfVvi3zlCclIYRwVXFgb",
-            placeholder: "评论一下吧！",
-            avatar:"/img/pl.png"
-        });
-    }
-</script>
-    </section>
-  
-
-  
-
-
 
     
+
 
           </div>
         </div>
@@ -348,9 +222,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

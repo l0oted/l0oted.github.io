@@ -6,19 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>校园网渗透测试(系统层篇) | looted&#39;s blog</title>
+  <title>splunk日记分析系统 | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
-<meta name="keywords" content="内网渗透,渗透思路">
+  <meta name="description" content="简介Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统简单来">
+<meta name="keywords" content="splunk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="校园网渗透测试(系统层篇)">
-<meta property="og:url" content="http://yoursite.com/2018/01/02/校园网渗透测试-系统层篇/index.html">
+<meta property="og:title" content="splunk日记分析系统">
+<meta property="og:url" content="http://yoursite.com/2018/03/24/splunk日记分析系统/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
-<meta property="og:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
-<meta property="og:updated_time" content="2018-01-04T13:54:52.600Z">
+<meta property="og:description" content="简介Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统简单来">
+<meta property="og:image" content="http://yoursite.com/img/splunk/1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/2.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/3.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/4.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/5.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/6.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/7.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/8.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/9.jpg">
+<meta property="og:image" content="http://yoursite.com/img/splunk/10.jpg">
+<meta property="og:updated_time" content="2018-03-24T15:11:28.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="校园网渗透测试(系统层篇)">
-<meta name="twitter:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
+<meta name="twitter:title" content="splunk日记分析系统">
+<meta name="twitter:description" content="简介Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统简单来">
+<meta name="twitter:image" content="http://yoursite.com/img/splunk/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -146,20 +157,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-校园网渗透测试-系统层篇" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-splunk日记分析系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      校园网渗透测试(系统层篇)
+      splunk日记分析系统
     </h1>
   
 
         
-        <a href="/2018/01/02/校园网渗透测试-系统层篇/" class="archive-article-date">
-  	<time datetime="2018-01-02T11:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
+        <a href="/2018/03/24/splunk日记分析系统/" class="archive-article-date">
+  	<time datetime="2018-03-24T05:49:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
 </a>
         
       </header>
@@ -175,44 +186,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<blockquote>
-<p>学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。</p>
-</blockquote>
-<p>校园网为什么存在众多漏洞？<br>服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比<br>校园网都有哪些系统？<br>举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等<br>这些系统都是在哪些网段呢？<br><a id="more"></a></p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>对校园网的子网划分进行一个信息收集和猜测<br>局域网保留地址：<br>A类：10.0.0.0/8      10.0.0.0-10.255.255.255<br>B类：172.16.0.0/12   172.16.0.0-172.31.255.255<br>C类：192.168.0.0/16  192.168.0.0～192.168.255.255<br>为什么要先对内网的结构进行收集和猜测呢？<br>主要是为了弄清楚哪些网段有比较多的服务器，还有他们在跑什么业务，这样我们就可以更有针对性的开展渗透测试<br>我们收集这些信息的方法有很多种：<br>1.大范围的扫描80，8080端口<br>2.内网ping学校网站域名（如果设置了外网DNS是无法解析到内网服务器ip的）<br>3.查看路由跳转经过的网段<br>还有很多种这就不一一举例出来了<br>经过一段时间的收集后我们确定出重要的网段然后整理出来</p>
-<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>系统层的漏洞扫描<br>使用漏扫工具对这些网段进行漏洞扫描<br>推荐几款漏扫工具：openvas  nessus  nmap  sparte<br>注意一些直接getshell的端口：<br>111 139 445 1099 2049 3632 3389 6667 8787 8180 6379<br>系统层的漏洞利用学习推荐Metasploitable2<br>对于上一年五月份来说一个msf就够，给他来一波ms17-010(永恒之蓝)，一堆shell</p>
-<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><p>问题来了，校园网内不能开nat，不能桥接，找到漏洞利用了，shell怎么返回到虚拟机<br>1.使用bat脚本，持续开启nat服务，然后在虚拟机做个端口映射，映射到物理机上的其他端口，payload设置返回端口为物理机上的端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">:s</span><br><span class="line">ping -n 1 127.1&gt;null</span><br><span class="line">net start|findstr /i /c:&quot;VMware NAT Service&quot;&gt;nul&amp;&amp;set k=1||set k=0</span><br><span class="line">if %k%==0 (net start &quot;VMware NAT Service&quot;) </span><br><span class="line">goto s</span><br></pre></td></tr></table></figure></p>
-<p>2.使用windows大杀器PentestBox(聚成kali的很多软件)</p>
-<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><p>校园网拿到shell以后我们可以做什么？？<br>在学校上网被运营商垄断网费贼贵<br>拿到shell可以挂个vpn我们上网就不用交费啦！<br>还有一个就是校园网晚上会断网（当代大学生烦恼的问题）<br>我们只需要拿到上网验证服务器的shell，上去改下我们上网的权限就可以24小时不断网<br>怎么找到上网验证服务器的IP地址呢？<br>验证的时候看跳转/抓包–嘿嘿嘿不说了不说了</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统<br><strong>简单来说：将所有服务器日记信息实时转发到splunk服务器进行储存，这样就算服务器的日记文件被恶意删除，也不会影响到日记分析或取证。也可以创建规则，当服务器有恶意扫描时候触发警报，这对运维应急响应人员有很大的帮助</strong></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装包两个<br>splunk服务器端最好搭建在linux上<br>服务器端<br>linux：<code>splunk-6.4.3-linux-x86_64.tgz</code><br>客户端(forwarder)<br>windows:<code>splunkforwarder-6.4.3-x64-release.msi</code><br>linux：<code>splunkforwarder-6.4.3-linux-x86_64.tgz</code></p>
+<p>下载地址：官网<a href="https://www.splunk.com/" target="_blank" rel="noopener">https://www.splunk.com/</a> 要先注册</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><strong><font size="5">服务器：</font><br></strong><br>在centos7部署splunk服务器时<br>防止数据接收失败，为了服务端的正常运行<br>需要关闭防火墙，还有selinux</p>
+<p><strong>centos 7 的防火墙是firewalld不是iptables</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld stop</span><br></pre></td></tr></table></figure></p>
+<p><strong>selinux</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sestatus -v  查看seliunx状态</span><br><span class="line"></span><br><span class="line">setenforce 0 临时关闭 selinux</span><br><span class="line"></span><br><span class="line">永久关闭</span><br><span class="line"></span><br><span class="line">/etc/selinux/config</span><br><span class="line"></span><br><span class="line">selinux =enforcing 改成 disabled 需要重启</span><br></pre></td></tr></table></figure>
+<p><strong>0X01<br>先把安装包拉到usr文件夹进行解压</strong><br><img src="/img/splunk/1.jpg" alt="“splunk”"><br><strong>0X02<br>进入splunk目录的bin启动服务</strong><br><img src="/img/splunk/2.jpg" alt="“splunk”"><br><strong>0X03<br>splunk安装之后开启Splunk Web端口8000。Splunkd端口8089端为管理端口。<br>安装之后我们可以在浏览器中访问splunk 8000端口的WEB界面。<br><a href="http://127.0.0.1：8000" target="_blank" rel="noopener">http://127.0.0.1：8000</a><br>进入splunk默认的管理员为：admin 、密码为changeme。第一登录便会强制要求修改密码</strong><br><img src="/img/splunk/3.jpg" alt="“splunk”"><br><strong>0X04
+</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splunk enable boot-start  设置开机启动</span><br><span class="line"></span><br><span class="line">splunk status  查看splunk状态和版本信息</span><br><span class="line"></span><br><span class="line">ps -f | grep splunk  查看进程相关信息</span><br></pre></td></tr></table></figure></p>
+<p><strong><font size="5">客户端(forwarder):</font><br></strong><br><strong>windows：</strong><br><strong>0x01</strong><br>打开msi文件选择customize<br><img src="/img/splunk/4.jpg" alt="“splunk”"><br><strong>0x02</strong><br>选择安装路径<br><img src="/img/splunk/5.jpg" alt="“splunk”"><br><strong>0x03</strong><br>直接下一步<br><img src="/img/splunk/6.jpg" alt="“splunk”"><br><strong>0x04</strong><br>下一步<br><img src="/img/splunk/7.jpg" alt="“splunk”"><br><strong>0x05</strong><br>选择需要转发的系统文件，如果选择项没有<br>eg：tomcat访问日记，直接人工选择路径<br><img src="/img/splunk/8.jpg" alt="“splunk”"><br><strong>0x06</strong><br>这里直接填写本地ip和8089端口<br><img src="/img/splunk/9.jpg" alt="“splunk”"><br><strong>0x07</strong><br>填写splunk的ip，端口9997<br><img src="/img/splunk/10.jpg" alt="“splunk”"> </p>
+<p><strong>linux：</strong></p>
+<p>将forwarder解压出来进入文件夹的bin/目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd bin/</span><br><span class="line"></span><br><span class="line">./splunk start</span><br><span class="line"></span><br><span class="line">./splunk enable boot-start   设置开机启动 </span><br><span class="line"></span><br><span class="line">ps aux |grep splunk</span><br><span class="line"></span><br><span class="line">./splunk add forward-server ip:端口  添加转发服务器</span><br><span class="line"></span><br><span class="line">./splunk add forward-server ip:端口 -auth admin:password</span><br><span class="line"></span><br><span class="line">./splunk add monitor /home/log/access.log  添加内容</span><br><span class="line"></span><br><span class="line">./ splunk list add monitor /home 监控整个目录</span><br><span class="line"></span><br><span class="line">./splunk list forward-server 查看splunk的转发情况</span><br><span class="line"></span><br><span class="line">./splunk list monitor 显示那些被监控</span><br></pre></td></tr></table></figure></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -223,11 +211,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透思路</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">splunk</a>
         		</li>
       		
 		</ul>
@@ -246,18 +230,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/03/kali实现的进程实时显示/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          kali实现的进程实时显示
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/02/2017-BDCTF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017-BDCTF</div>
+    <a href="/2018/03/23/天翼上网账号抓取/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">天翼上网账号抓取</div>
       <i class="icon-circle-right"></i>
     </a>
   
