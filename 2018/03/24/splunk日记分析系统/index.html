@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://yoursite.com/img/splunk/8.jpg">
 <meta property="og:image" content="http://yoursite.com/img/splunk/9.jpg">
 <meta property="og:image" content="http://yoursite.com/img/splunk/10.jpg">
-<meta property="og:updated_time" content="2018-03-24T15:11:28.956Z">
+<meta property="og:updated_time" content="2018-03-24T15:14:00.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="splunk日记分析系统">
 <meta name="twitter:description" content="简介Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统简单来">
@@ -186,7 +186,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统<br><strong>简单来说：将所有服务器日记信息实时转发到splunk服务器进行储存，这样就算服务器的日记文件被恶意删除，也不会影响到日记分析或取证。也可以创建规则，当服务器有恶意扫描时候触发警报，这对运维应急响应人员有很大的帮助</strong></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Splunk 是机器数据的引擎。 使用Splunk可收集、索引和利用所有应用程序、服务器和设备（物理、虚拟和云中）生成的快速移动型计算机数据 。从一个位置 搜索并分析所有实时和历史数据。 使用 Splunking处理计算机数据，可让您在几分钟内（而不是几个小时或几天）解决问题和调查安全事件。监视您的端对端基础结构，避免服务性能降低或中断。以较低成本满足合规性要求，关联并分析跨越多个系统<br><strong>简单来说：将所有服务器日记信息实时转发到splunk服务器进行储存，这样就算服务器的日记文件被恶意删除，也不会影响到日记分析或取证。也可以创建规则，当服务器有恶意扫描时候触发警报，这对运维应急响应人员有很大的帮助</strong><br><a id="more"></a></p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装包两个<br>splunk服务器端最好搭建在linux上<br>服务器端<br>linux：<code>splunk-6.4.3-linux-x86_64.tgz</code><br>客户端(forwarder)<br>windows:<code>splunkforwarder-6.4.3-x64-release.msi</code><br>linux：<code>splunkforwarder-6.4.3-linux-x86_64.tgz</code></p>
 <p>下载地址：官网<a href="https://www.splunk.com/" target="_blank" rel="noopener">https://www.splunk.com/</a> 要先注册</p>
 <h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><strong><font size="5">服务器：</font><br></strong><br>在centos7部署splunk服务器时<br>防止数据接收失败，为了服务端的正常运行<br>需要关闭防火墙，还有selinux</p>
@@ -405,10 +405,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
               </li>
              
@@ -417,11 +413,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,7 +433,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">splunk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,10 +450,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">splunk</a>
               </li>
             
             <div class="clearfix"></div>
