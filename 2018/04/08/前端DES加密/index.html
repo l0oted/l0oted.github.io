@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 系统美化 | looted&#39;s blog</title>
+  <title>前端DES加密 | looted&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="looted&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/系统美化/index.html">
+  <meta name="description" content="这几天遇到一个后台，想暴力破解输入账号密码直接加密了,然后分析了一下">
+<meta name="keywords" content="加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端DES加密">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/前端DES加密/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
+<meta property="og:description" content="这几天遇到一个后台，想暴力破解输入账号密码直接加密了,然后分析了一下">
+<meta property="og:image" content="http://yoursite.com/img/DES/2.png">
+<meta property="og:image" content="http://yoursite.com/img/DES/1.png">
+<meta property="og:image" content="http://yoursite.com/img/DES/3.png">
+<meta property="og:updated_time" content="2018-04-08T15:04:06.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="looted&#39;s blog">
+<meta name="twitter:title" content="前端DES加密">
+<meta name="twitter:description" content="这几天遇到一个后台，想暴力破解输入账号密码直接加密了,然后分析了一下">
+<meta name="twitter:image" content="http://yoursite.com/img/DES/2.png">
   
     <link rel="alternative" href="/atom.xml" title="looted&#39;s blog" type="application/atom+xml">
   
@@ -141,65 +150,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端DES加密" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/03/kali实现的进程实时显示/" class="archive-article-date">
-  	<time datetime="2018-01-03T14:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/03/kali实现的进程实时显示/">kali实现的进程实时显示</a>
+    <h1 class="article-title" itemprop="name">
+      前端DES加密
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/08/前端DES加密/" class="archive-article-date">
+  	<time datetime="2018-04-08T08:42:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
+</a>
+        
+      </header>
+	  <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+	  
+		<span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><hr><br><strong>这几天遇到一个后台，想暴力破解<br>输入账号密码直接加密了,然后分析了一下</strong><br><img src="/img/DES/2.png" alt="“2”"><br><a id="more"></a><br><strong>如图所示，账号密码已经被加密过了<br>接下来看看用了什么加密</strong></p>
+<p><img src="/img/DES/1.png" alt="“1”"></p>
+<p>__看到有两个js文件<code>md5.js</code>和<code>des.js</code><br>熟悉点密码学的朋友一看文件名就知道是加密脚本</p>
+<p>username—DES加密：<br>key1:c316e97c-9b6c-4f12-82d3-7b97ac21f704<br>key2:f119bd1f-577e-445a-929d-b55a083ce4fb<br>key3:4318db24-a0c7-4c79-9681-2d3d263f95b3</p>
+<p>password—MD5加密：<br>md5(password.value+”{“+<code>salt</code>+”}”)<br>这种方法是为了预防网站存在sql注入漏洞被暴库后<br>黑客拿这串md5也解密不出来，对MD5强度做了一个强化__</p>
+<h2 id="将暴力破解进行下去"><a href="#将暴力破解进行下去" class="headerlink" title="将暴力破解进行下去"></a>将暴力破解进行下去</h2><p>__把收集过来的账号批量des加密<br>然后再把密码按照网站上的MD5方式加密</p>
+<p>批量des加密需要用到<code>des.php</code>和<code>des.js</code><br><code>des.js</code>算法很长就不放上来了__</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"des.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">        </span></span><br><span class="line"><span class="undefined">        window.onload = function getResult()&#123;</span></span><br><span class="line"><span class="undefined">            //待加密字符串</span></span><br><span class="line"><span class="undefined">            var str = document.getElementById("str").value;</span></span><br><span class="line"><span class="xml">			//var str = document.getElementById(" &lt;? echo $admin; ?&gt;").innerText; </span></span><br><span class="line"><span class="undefined">            //第一个参数必须；第二个、第三个参数可选</span></span><br><span class="line"><span class="undefined">            var key1 = document.getElementById("key1").innerText;  </span></span><br><span class="line"><span class="undefined">            var key2 = document.getElementById("key2").innerText; </span></span><br><span class="line"><span class="undefined">            var key3 = document.getElementById("key3").innerText; </span></span><br><span class="line"><span class="undefined">            //加密方法      </span></span><br><span class="line"><span class="undefined">            var  enResult = strEnc(str,key1,key2,key3);         </span></span><br><span class="line"><span class="undefined">            //解密方法</span></span><br><span class="line"><span class="undefined">            var deResult = strDec(enResult,key1,key2,key3);</span></span><br><span class="line"><span class="undefined">            //展示结果</span></span><br><span class="line"><span class="undefined">            document.getElementById("enStr").innerText = enResult; </span></span><br><span class="line"><span class="undefined">            document.getElementById("dnStr").innerText = deResult; </span></span><br><span class="line"><span class="undefined">			document.cookie="name="+ enResult;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	&lt;?php</span><br><span class="line">	foreach ($_GET as $admin)  </span><br><span class="line">    ?&gt;</span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span> <span class="attr">id</span>=<span class="string">"str"</span> <span class="attr">value</span>=<span class="string">"&lt;?php echo $admin?&gt;"</span> /&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"加解密"</span> <span class="attr">onclick</span>=<span class="string">"getResult()"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span>          </span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>加密key：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>key1=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key1"</span>&gt;</span>c316e97c-9b6c-4f12-82d3-7b97ac21f704<span class="tag">&lt;/<span class="name">span</span>&gt;</span>;key2=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key2"</span>&gt;</span>f119bd1f-577e-445a-929d-b55a083ce4fb<span class="tag">&lt;/<span class="name">span</span>&gt;</span>;key3=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key3"</span>&gt;</span>4318db24-a0c7-4c79-9681-2d3d263f95b3<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>加密结果：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"enStr"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>解密结果： <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">id</span> = <span class="string">"dnStr"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/DES/3.png" alt="“1”"></p>
+<p><strong>MD5加密就不写了比较简单<br>对于这种网站我们也可以直接找xss直接打cookie<br>不过已经习惯性见框就插了</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kai</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统美化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/08/记录下单身结束/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录下单身结束</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src="/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "oKYfcplcKAV7KNQLRl3cn45m-gzGzoHsz",
+            app_key: "kEVrLfVvi3zlCclIYRwVXFgb",
+            placeholder: "评论一下吧！",
+            avatar:"/img/pl.png"
+        });
+    }
+</script>
+    </section>
+  
+
+  
+
+
 
     
-
 
           </div>
         </div>
@@ -226,9 +313,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
