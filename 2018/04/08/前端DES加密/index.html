@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/img/DES/2.png">
 <meta property="og:image" content="http://yoursite.com/img/DES/1.png">
 <meta property="og:image" content="http://yoursite.com/img/DES/3.png">
-<meta property="og:updated_time" content="2018-04-08T15:04:06.917Z">
+<meta property="og:updated_time" content="2018-04-10T07:35:39.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端DES加密">
 <meta name="twitter:description" content="这几天遇到一个后台，想暴力破解输入账号密码直接加密了,然后分析了一下">
@@ -180,11 +180,11 @@
       
         <p><hr><br><strong>这几天遇到一个后台，想暴力破解<br>输入账号密码直接加密了,然后分析了一下</strong><br><img src="/img/DES/2.png" alt="“2”"><br><a id="more"></a><br><strong>如图所示，账号密码已经被加密过了<br>接下来看看用了什么加密</strong></p>
 <p><img src="/img/DES/1.png" alt="“1”"></p>
-<p>__看到有两个js文件<code>md5.js</code>和<code>des.js</code><br>熟悉点密码学的朋友一看文件名就知道是加密脚本</p>
-<p>username—DES加密：<br>key1:c316e97c-9b6c-4f12-82d3-7b97ac21f704<br>key2:f119bd1f-577e-445a-929d-b55a083ce4fb<br>key3:4318db24-a0c7-4c79-9681-2d3d263f95b3</p>
-<p>password—MD5加密：<br>md5(password.value+”{“+<code>salt</code>+”}”)<br>这种方法是为了预防网站存在sql注入漏洞被暴库后<br>黑客拿这串md5也解密不出来，对MD5强度做了一个强化__</p>
-<h2 id="将暴力破解进行下去"><a href="#将暴力破解进行下去" class="headerlink" title="将暴力破解进行下去"></a>将暴力破解进行下去</h2><p>__把收集过来的账号批量des加密<br>然后再把密码按照网站上的MD5方式加密</p>
-<p>批量des加密需要用到<code>des.php</code>和<code>des.js</code><br><code>des.js</code>算法很长就不放上来了__</p>
+<p><strong>看到有两个js文件<code>md5.js</code>和<code>des.js</code><br>熟悉点密码学的朋友一看文件名就知道是加密脚本</strong></p>
+<p><strong>username—DES加密：<br>key1:c316e97c-9b6c-4f12-82d3-7b97ac21f704<br>key2:f119bd1f-577e-445a-929d-b55a083ce4fb<br>key3:4318db24-a0c7-4c79-9681-2d3d263f95b3</strong></p>
+<p><strong>password—MD5加密：<br>md5(password.value+”{“+<code>salt</code>+”}”)<br>这种方法是为了预防网站存在sql注入漏洞被暴库后<br>黑客拿这串md5也解密不出来，对MD5强度做了一个强化</strong></p>
+<h2 id="将暴力破解进行下去"><a href="#将暴力破解进行下去" class="headerlink" title="将暴力破解进行下去"></a>将暴力破解进行下去</h2><p><strong>把收集过来的账号批量des加密<br>然后再把密码按照网站上的MD5方式加密</strong></p>
+<p><strong>批量des加密需要用到<code>des.php</code>和<code>des.js</code><br><code>des.js</code>算法很长就不放上来了</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"des.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> <span class="title">getResult</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//待加密字符串</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> str = <span class="built_in">document</span>.getElementById(<span class="string">"str"</span>).value;</span></span><br><span class="line"><span class="xml">			//var str = document.getElementById(" <span class="php"><span class="meta">&lt;?</span> <span class="keyword">echo</span> $admin; <span class="meta">?&gt;</span></span>").innerText; </span></span><br><span class="line"><span class="javascript">            <span class="comment">//第一个参数必须；第二个、第三个参数可选</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> key1 = <span class="built_in">document</span>.getElementById(<span class="string">"key1"</span>).innerText;  </span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> key2 = <span class="built_in">document</span>.getElementById(<span class="string">"key2"</span>).innerText; </span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> key3 = <span class="built_in">document</span>.getElementById(<span class="string">"key3"</span>).innerText; </span></span><br><span class="line"><span class="javascript">            <span class="comment">//加密方法      </span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span>  enResult = strEnc(str,key1,key2,key3);         </span></span><br><span class="line"><span class="javascript">            <span class="comment">//解密方法</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> deResult = strDec(enResult,key1,key2,key3);</span></span><br><span class="line"><span class="javascript">            <span class="comment">//展示结果</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"enStr"</span>).innerText = enResult; </span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"dnStr"</span>).innerText = deResult; </span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.cookie=<span class="string">"name="</span>+ enResult;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">	<span class="keyword">foreach</span> ($_GET <span class="keyword">as</span> $admin)  </span></span><br><span class="line"><span class="php">    <span class="meta">?&gt;</span></span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span> <span class="attr">id</span>=<span class="string">"str"</span> <span class="attr">value</span>=<span class="string">"&lt;?php echo $admin?&gt;"</span> /&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"加解密"</span> <span class="attr">onclick</span>=<span class="string">"getResult()"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span>          </span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>加密key：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>key1=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key1"</span>&gt;</span>c316e97c-9b6c-4f12-82d3-7b97ac21f704<span class="tag">&lt;/<span class="name">span</span>&gt;</span>;key2=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key2"</span>&gt;</span>f119bd1f-577e-445a-929d-b55a083ce4fb<span class="tag">&lt;/<span class="name">span</span>&gt;</span>;key3=<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"key3"</span>&gt;</span>4318db24-a0c7-4c79-9681-2d3d263f95b3<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>加密结果：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"enStr"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>解密结果： <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">id</span> = <span class="string">"dnStr"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/img/DES/3.png" alt="“1”"></p>
 <p><strong>MD5加密就不写了比较简单<br>对于这种网站我们也可以直接找xss直接打cookie<br>不过已经习惯性见框就插了</strong></p>
@@ -391,6 +391,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">蓝盾CTF</a>
               </li>
              
@@ -403,14 +411,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
               </li>
              
@@ -419,7 +419,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kai</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">splunk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -432,18 +444,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">kai</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统美化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
             
             <div class="clearfix"></div>
