@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/02/校园网渗透测试-系统层篇/index.html">
 <meta property="og:site_name" content="looted&#39;s blog">
 <meta property="og:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
-<meta property="og:updated_time" content="2018-01-04T13:54:52.600Z">
+<meta property="og:updated_time" content="2018-04-10T07:32:49.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校园网渗透测试(系统层篇)">
 <meta name="twitter:description" content="学校的生活就要过去，下个学期就要去公司实习了。在学校一个人做了半年的渗透测试，写了N篇报告，该看的，不该看的都看过了。  校园网为什么存在众多漏洞？服务器多但是缺少信安人员的管理；服务器的数量和服务器管理能力不成正比校园网都有哪些系统？举些栗子： OA系统 监控系统 财务系统 档案系统 一卡通系统 DNS系统 路由管理系统 上网系统 等等这些系统都是在哪些网段呢？">
@@ -184,6 +184,7 @@
 <h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><p>问题来了，校园网内不能开nat，不能桥接，找到漏洞利用了，shell怎么返回到虚拟机<br>1.使用bat脚本，持续开启nat服务，然后在虚拟机做个端口映射，映射到物理机上的其他端口，payload设置返回端口为物理机上的端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">:s</span><br><span class="line">ping -n 1 127.1&gt;null</span><br><span class="line">net start|findstr /i /c:&quot;VMware NAT Service&quot;&gt;nul&amp;&amp;set k=1||set k=0</span><br><span class="line">if %k%==0 (net start &quot;VMware NAT Service&quot;) </span><br><span class="line">goto s</span><br></pre></td></tr></table></figure></p>
 <p>2.使用windows大杀器PentestBox(聚成kali的很多软件)</p>
 <h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><p>校园网拿到shell以后我们可以做什么？？<br>在学校上网被运营商垄断网费贼贵<br>拿到shell可以挂个vpn我们上网就不用交费啦！<br>还有一个就是校园网晚上会断网（当代大学生烦恼的问题）<br>我们只需要拿到上网验证服务器的shell，上去改下我们上网的权限就可以24小时不断网<br>怎么找到上网验证服务器的IP地址呢？<br>验证的时候看跳转/抓包–嘿嘿嘿不说了不说了</p>
+<p>开玩笑的,开玩笑的 哈哈哈</p>
 
       
 
@@ -438,15 +439,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,11 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS跳转</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +479,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透思路</a>
+                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
             
             <div class="clearfix"></div>
